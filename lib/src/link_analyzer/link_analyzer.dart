@@ -3,12 +3,25 @@ import 'package:link_metadata/src/link_analyzer/utils/utils.dart';
 import 'package:link_metadata/src/link_data.dart';
 import 'package:link_metadata/src/parser/og_parser.dart';
 
+/// Analyzes web links and extracts metadata including Open Graph tags.
+///
+/// This class fetches HTML content from URLs and parses metadata such as
+/// title, description, site name, and images.
 class LinkAnalyzer {
   Uri? proxyUri;
   LinkAnalyzer({this.proxyUri});
 
   //NOTE: The proxy uri should take a query parameter "url" and return the html of the url
 
+  /// Parses a URL and extracts link metadata.
+  ///
+  /// Fetches the HTML content from [url], parses Open Graph tags and other
+  /// meta tags, and downloads associated images. Returns a [LinkData] object
+  /// containing the extracted metadata, or null if parsing fails.
+  ///
+  /// Optional parameters [getHtmlResponse] and [getImageBytesResponse] can be
+  /// provided for custom HTTP fetching logic, useful for testing or custom
+  /// network handling.
   Future<LinkData?> parseUrl(
     String url, {
     Future<String?> Function(Uri uri)? getHtmlResponse,

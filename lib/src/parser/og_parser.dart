@@ -1,3 +1,7 @@
+/// Parser for extracting Open Graph metadata from HTML content.
+///
+/// Parses HTML strings to extract Open Graph tags and other meta tags
+/// such as title, description, site name, images, and favicons.
 class OgParser {
   final String html;
 
